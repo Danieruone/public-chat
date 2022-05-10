@@ -23,6 +23,10 @@ const routes = [
         path: 'direct',
         component: DirectRooms,
       },
+      {
+        path: '',
+        redirect: '/rooms/public',
+      },
     ],
   },
 ];
