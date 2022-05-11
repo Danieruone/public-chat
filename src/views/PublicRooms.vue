@@ -6,11 +6,11 @@
 
 <script>
 const mockDM = [
-  { name: 'Daniel', online: 'true', lastMessage: 'Que más!', time: '09:00' },
-  { name: 'Carlos', online: 'true', lastMessage: 'Cómo sería', time: '09:00' },
+  { name: 'Daniel', online: true, lastMessage: 'Que más!', time: '09:00' },
+  { name: 'Carlos', online: false, lastMessage: 'Cómo sería', time: '09:00' },
   {
     name: 'Alfredo',
-    online: 'true',
+    online: true,
     lastMessage: 'Vamos a jugar o qué',
     time: '09:00',
   },
