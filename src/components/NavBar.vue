@@ -1,14 +1,10 @@
 <template>
-  <div class="container">
-    <router-link
-      style="text-decoration: none; color: inherit"
-      to="/rooms/public"
-      >Public Rooms</router-link
+  <div>
+    <router-link v-slot="{ isActive }" to="/rooms/public"
+      ><a :class="[isActive && 'isActive']">Public Rooms</a></router-link
     >
-    <router-link
-      style="text-decoration: none; color: inherit"
-      to="/rooms/direct"
-      >Direct Messages</router-link
+    <router-link v-slot="{ isActive }" to="/rooms/direct"
+      ><a :class="[isActive && 'isActive']">Direct Messages</a></router-link
     >
   </div>
 </template>
@@ -20,8 +16,15 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
+a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: inherit;
+  padding: 5px;
+}
+
+.isActive {
+  color: #3ba58a;
+  border-bottom: 3px solid #3ba58a;
 }
 </style>
