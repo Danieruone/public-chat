@@ -1,5 +1,5 @@
 <template>
-  <h1>Direct</h1>
+  <h2>Direct</h2>
 </template>
 
 <script>
@@ -9,5 +9,4 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped></style>

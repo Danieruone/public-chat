@@ -1,7 +1,12 @@
 <template>
-  <h1>Rooms View</h1>
-  <NavBar />
-  <router-view></router-view>
+  <div class="container">
+    <div class="logoContainer">
+      <img src="@/assets/chat-icon.png" />
+      <h2>Public chat</h2>
+    </div>
+    <NavBar />
+  </div>
+  <router-view />
 </template>
 
 <script>
@@ -12,4 +17,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer img {
+  width: 30px;
+  margin-right: 0.5rem;
+}
+</style>
