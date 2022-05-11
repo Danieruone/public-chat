@@ -2,10 +2,17 @@
   <div class="chatPreviewContainer">
     <div class="avatar">
       <p>{{ name.split('')[0] }}</p>
-      <div v-if="online" class="onlineStatus"></div>
+      <div
+        class="onlineStatus"
+        :style="[
+          online ? { background: '#3cc6b7' } : { background: '#ff3f3f' },
+        ]"
+      ></div>
     </div>
     <div>
-      <h4>{{ name }}</h4>
+      <div class="chatTitle">
+        <h4>{{ name }}</h4>
+      </div>
       <span>{{ lastMessage }}</span>
     </div>
   </div>
@@ -25,16 +32,17 @@ export default {
 
 <style scoped>
 .chatPreviewContainer {
-  width: 100%;
   display: flex;
   align-items: center;
   padding: 10px;
+  border-bottom: 1px solid #d6d6d6;
 }
 
 .avatar {
-  background-color: #8e8e8e;
+  background-color: #5099f4;
   width: 50px;
   height: 50px;
+  color: white;
   border-radius: 50%;
   margin-right: 1rem;
   display: flex;
@@ -46,7 +54,6 @@ export default {
 .onlineStatus {
   width: 13px;
   height: 13px;
-  background: #3cc6b7;
   position: absolute;
   border-radius: 50%;
   bottom: 3px;
