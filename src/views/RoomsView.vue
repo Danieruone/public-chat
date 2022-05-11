@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
+  <div class="roomsContainer">
     <div class="logoContainer">
       <img src="@/assets/chat-icon.png" />
-      <h2>Public chat</h2>
+      <h2>Public Chat</h2>
     </div>
     <NavBar />
   </div>
-  <router-view />
+  <div class="componentsArea">
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -18,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.roomsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,10 +30,17 @@ export default {
 .logoContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .logoContainer img {
   width: 30px;
   margin-right: 0.5rem;
+}
+
+.componentsArea {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 </style>

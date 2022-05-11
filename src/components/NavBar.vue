@@ -1,10 +1,10 @@
 <template>
   <div>
     <router-link v-slot="{ isActive }" to="/rooms/public"
-      ><a :class="[isActive && 'isActive']">Public Rooms</a></router-link
+      ><a :class="[isActive && 'isActive']">Public rooms</a></router-link
     >
     <router-link v-slot="{ isActive }" to="/rooms/direct"
-      ><a :class="[isActive && 'isActive']">Direct Messages</a></router-link
+      ><a :class="[isActive && 'isActive']">Direct chats</a></router-link
     >
   </div>
 </template>
@@ -19,12 +19,12 @@ export default {
 a {
   text-decoration: none;
   color: inherit;
-  padding: 5px;
-  margin: 0 1rem;
+  padding: 10px 20px;
 }
 
 .isActive {
-  color: #3ba58a;
-  border-bottom: 3px solid #3ba58a;
+  color: white;
+  border-radius: 30px;
+  background: #3ba58a;
 }
 </style>
