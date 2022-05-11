@@ -2,7 +2,7 @@
   <div class="container">
     <div class="logoContainer">
       <img src="@/assets/chat-icon.png" />
-      <h2>Public chat</h2>
+      <h2>Public Chat</h2>
     </div>
     <NavBar />
   </div>
@@ -28,6 +28,7 @@ export default {
 .logoContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .logoContainer img {
