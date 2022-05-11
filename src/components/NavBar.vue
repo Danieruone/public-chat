@@ -17,10 +17,10 @@ export default {
 
 <style scoped>
 a {
-  margin: 0 10px;
   text-decoration: none;
   color: inherit;
   padding: 5px;
+  margin: 0 1rem;
 }
 
 .isActive {

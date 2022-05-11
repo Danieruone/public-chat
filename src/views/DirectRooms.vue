@@ -1,5 +1,5 @@
 <template>
-  <h1>Direct</h1>
+  <h2>Direct</h2>
 </template>
 
 <script>
