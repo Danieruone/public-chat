@@ -1,21 +1,23 @@
 <template>
-  <div class="chatPreviewContainer">
-    <div class="avatar">
-      <p>{{ name.split('')[0] }}</p>
-      <div
-        class="onlineStatus"
-        :style="[
-          online ? { background: '#3cc6b7' } : { background: '#ff3f3f' },
-        ]"
-      ></div>
-    </div>
-    <div>
-      <div class="chatTitle">
-        <h4>{{ name }}</h4>
+  <router-link to="/chat/uuid-random-123">
+    <div class="chatPreviewContainer">
+      <div class="avatar">
+        <p>{{ name.split('')[0] }}</p>
+        <div
+          class="onlineStatus"
+          :style="[
+            online ? { background: '#3cc6b7' } : { background: '#ff3f3f' },
+          ]"
+        ></div>
       </div>
-      <span>{{ lastMessage }}</span>
+      <div>
+        <div class="chatTitle">
+          <h4>{{ name }}</h4>
+        </div>
+        <span>{{ lastMessage }}</span>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -72,5 +74,10 @@ export default {
 .chatPreviewContainer span {
   font-size: 0.8rem;
   color: #8e8e8e;
+}
+
+* {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
