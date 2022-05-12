@@ -38,6 +38,10 @@ export default {
   border-bottom: 1px solid #d6d6d6;
 }
 
+.chatPreviewContainer:last-child {
+  border-bottom: none;
+}
+
 .avatar {
   background-color: #5099f4;
   width: 50px;
