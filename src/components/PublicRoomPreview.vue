@@ -1,11 +1,9 @@
 <template>
-  <router-link :to="`/chat/${id}`">
-    <div class="publicRoomPreviewContainer">
-      <span
-        ><strong> {{ roomName }}</strong></span
-      >
-      <span>{{ people }}</span>
-    </div>
+  <router-link class="publicRoomPreviewContainer" :to="`/chat/${id}`">
+    <span
+      ><strong> {{ roomName }}</strong></span
+    >
+    <span>{{ people }}</span>
   </router-link>
 </template>
 

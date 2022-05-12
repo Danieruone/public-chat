@@ -1,21 +1,19 @@
 <template>
-  <router-link to="/chat/uuid-random-123">
-    <div class="chatPreviewContainer">
-      <div class="avatar">
-        <p>{{ name.split('')[0] }}</p>
-        <div
-          class="onlineStatus"
-          :style="[
-            online ? { background: '#3cc6b7' } : { background: '#ff3f3f' },
-          ]"
-        ></div>
+  <router-link class="chatPreviewContainer" to="/chat/uuid-random-123">
+    <div class="avatar">
+      <p>{{ name.split('')[0] }}</p>
+      <div
+        class="onlineStatus"
+        :style="[
+          online ? { background: '#3cc6b7' } : { background: '#ff3f3f' },
+        ]"
+      ></div>
+    </div>
+    <div>
+      <div class="chatTitle">
+        <h4>{{ name }}</h4>
       </div>
-      <div>
-        <div class="chatTitle">
-          <h4>{{ name }}</h4>
-        </div>
-        <span>{{ lastMessage }}</span>
-      </div>
+      <span>{{ lastMessage }}</span>
     </div>
   </router-link>
 </template>
