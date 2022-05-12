@@ -1,10 +1,11 @@
 <template>
   <div class="publicRoomsContainer">
-    <PublicRoomPreview
-      v-for="(room, idx) in mockPublicRooms"
-      :key="idx"
-      v-bind="room"
-    />
+    <router-link to="/chat/uuid-random-123"
+      ><PublicRoomPreview
+        v-for="(room, idx) in mockPublicRooms"
+        :key="idx"
+        v-bind="room"
+    /></router-link>
   </div>
 </template>
 
@@ -48,5 +49,10 @@ export default {
   min-height: 80vh;
   border-radius: 30px;
   padding: 10px;
+}
+
+* {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

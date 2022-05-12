@@ -5,6 +5,7 @@ import HomeView from './views/HomeView.vue';
 import RoomsView from './views/RoomsView.vue';
 import PublicRooms from './views/PublicRooms.vue';
 import DirectRooms from './views/DirectRooms.vue';
+import ChatView from './views/ChatView.vue';
 
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
         redirect: '/rooms/public',
       },
     ],
+  },
+  {
+    path: '/chat/:id',
+    component: ChatView,
   },
 ];
 
