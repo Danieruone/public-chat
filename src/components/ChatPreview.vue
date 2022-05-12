@@ -1,5 +1,5 @@
 <template>
-  <div class="chatPreviewContainer">
+  <router-link class="chatPreviewContainer" to="/chat/uuid-random-123">
     <div class="avatar">
       <p>{{ name.split('')[0] }}</p>
       <div
@@ -15,7 +15,7 @@
       </div>
       <span>{{ lastMessage }}</span>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -72,5 +72,10 @@ export default {
 .chatPreviewContainer span {
   font-size: 0.8rem;
   color: #8e8e8e;
+}
+
+* {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

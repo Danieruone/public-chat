@@ -1,8 +1,6 @@
 <template>
   <div class="directRoomsContainer">
-    <router-link to="/chat/uuid-random-123">
-      <ChatPreview v-for="(dm, idx) in mockDM" :key="idx" v-bind="dm"
-    /></router-link>
+    <ChatPreview v-for="(dm, idx) in mockDM" :key="idx" v-bind="dm" />
   </div>
 </template>
 
@@ -51,10 +49,5 @@ export default {
   min-height: 80vh;
   border-radius: 30px;
   padding: 10px;
-}
-
-* {
-  text-decoration: none;
-  color: inherit;
 }
 </style>

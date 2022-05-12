@@ -1,10 +1,10 @@
 <template>
-  <div class="publicRoomPreviewContainer">
+  <router-link class="publicRoomPreviewContainer" :to="`/chat/${id}`">
     <span
       ><strong> {{ roomName }}</strong></span
     >
     <span>{{ people }}</span>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
   props: {
     roomName: String,
     people: Number,
+    id: String,
   },
 };
 </script>
@@ -28,5 +29,10 @@ export default {
 
 .publicRoomPreviewContainer:last-child {
   border-bottom: none;
+}
+
+* {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
