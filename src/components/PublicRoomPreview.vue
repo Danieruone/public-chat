@@ -1,6 +1,8 @@
 <template>
   <div class="publicRoomPreviewContainer">
-    <span>{{ roomName }}</span>
+    <span
+      ><strong> {{ roomName }}</strong></span
+    >
     <span>{{ people }}</span>
   </div>
 </template>
