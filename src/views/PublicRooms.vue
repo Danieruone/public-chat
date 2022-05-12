@@ -1,28 +1,41 @@
 <template>
   <div class="publicRoomsContainer">
-    <ChatPreview v-for="(dm, idx) in mockDM" :key="idx" v-bind="dm" />
+    <router-link to="/chat/uuid-random-123"
+      ><PublicRoomPreview
+        v-for="(room, idx) in mockPublicRooms"
+        :key="idx"
+        v-bind="room"
+    /></router-link>
   </div>
 </template>
 
 <script>
-const mockDM = [
-  { name: 'Daniel', online: true, lastMessage: 'Que más!', time: '09:00' },
-  { name: 'Carlos', online: false, lastMessage: 'Cómo sería', time: '09:00' },
+const mockPublicRooms = [
   {
-    name: 'Alfredo',
-    online: true,
-    lastMessage: 'Vamos a jugar o qué',
-    time: '09:00',
+    roomName: 'Comics',
+    people: 590,
+  },
+  {
+    roomName: 'Juegos',
+    people: 300,
+  },
+  {
+    roomName: 'Amistad',
+    people: 108,
+  },
+  {
+    roomName: 'Libros',
+    people: 50,
   },
 ];
 
-import ChatPreview from '@/components/ChatPreview.vue';
+import PublicRoomPreview from '@/components/PublicRoomPreview.vue';
 export default {
   name: 'PublicRooms',
-  components: { ChatPreview },
+  components: { PublicRoomPreview },
   data() {
     return {
-      mockDM,
+      mockPublicRooms,
     };
   },
 };
@@ -36,5 +49,10 @@ export default {
   min-height: 80vh;
   border-radius: 30px;
   padding: 10px;
+}
+
+* {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
