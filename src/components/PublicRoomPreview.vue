@@ -1,5 +1,9 @@
 <template>
-  <router-link class="publicRoomPreviewContainer" :to="`/chat/${id}`">
+  <router-link
+    class="publicRoomPreviewContainer"
+    :to="`/chat/${id}`"
+    @click="setChatStoreName"
+  >
     <span
       ><strong> {{ roomName }}</strong></span
     >
@@ -14,6 +18,11 @@ export default {
     roomName: String,
     people: Number,
     id: String,
+  },
+  methods: {
+    setChatStoreName() {
+      this.$store.dispatch('changeCurrentChatName', this.roomName);
+    },
   },
 };
 </script>

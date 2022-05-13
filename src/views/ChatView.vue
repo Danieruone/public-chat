@@ -1,11 +1,18 @@
 <template>
-  <h1>Chat</h1>
+  <h1>{{ chatName }}</h1>
 </template>
 
 <script>
 export default {
   name: 'ChatView',
-  props: {},
+  data() {
+    return {
+      chatName: this.$store.state.currentChatName,
+    };
+  },
+  beforeUnmount() {
+    this.$store.dispatch('changeCurrentChatName', 'default name');
+  },
 };
 </script>
 
