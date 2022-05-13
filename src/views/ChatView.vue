@@ -21,6 +21,7 @@ export default {
   },
 
   beforeUnmount() {
+    localStorage.removeItem('currentChatName');
     this.$store.dispatch('changeCurrentChatName', 'default name');
     this.$store.state.socketConnected &&
       this.$store.state.socket.send(

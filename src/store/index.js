@@ -5,7 +5,8 @@ export const store = createStore({
     return {
       socket: new WebSocket('ws://159.203.189.250:8080/ws'),
       socketConnected: false,
-      currentChatName: 'default name',
+      currentChatName:
+        localStorage.getItem('currentChatName') || 'default name',
       publicChatRooms: [
         {
           roomName: 'Comics',
