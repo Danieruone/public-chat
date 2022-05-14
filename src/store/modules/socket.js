@@ -1,5 +1,5 @@
 const state = {
-  socket: new WebSocket('ws://159.203.189.250:8080/ws'),
+  socket: new WebSocket(process.env.VUE_APP_SOCKET_CONNECTION),
   socketConnected: false,
 };
 

@@ -15,7 +15,7 @@ export default {
       this.$store.dispatch('socketInstance/setSocketConnection', false);
       this.$store.dispatch(
         'socketInstance/reconnectSocket',
-        new WebSocket('ws://159.203.189.250:8080/ws')
+        new WebSocket(process.env.VUE_APP_SOCKET_CONNECTION)
       );
     };
   },
