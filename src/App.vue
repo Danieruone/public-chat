@@ -5,6 +5,20 @@
 <script>
 export default {
   name: 'App',
+  created() {
+    this.$store.state.socketInstance.socket.onopen = () => {
+      console.log('WebSocket Client Connected');
+      this.$store.dispatch('socketInstance/setSocketConnection', true);
+    };
+    this.$store.state.socketInstance.socket.onclose = () => {
+      console.log('Socket is closed. Trying to reconnect');
+      this.$store.dispatch('socketInstance/setSocketConnection', false);
+      this.$store.dispatch(
+        'socketInstance/reconnectSocket',
+        new WebSocket(process.env.VUE_APP_SOCKET_CONNECTION)
+      );
+    };
+  },
 };
 </script>
 

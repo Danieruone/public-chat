@@ -7,11 +7,29 @@ export default {
   name: 'ChatView',
   data() {
     return {
-      chatName: this.$store.state.currentChatName,
+      chatName: this.$store.state.chatModule.currentChatName,
     };
   },
+  created() {
+    this.$store.state.socketInstance.socketConnected &&
+      this.$store.state.socketInstance.socket.send(
+        JSON.stringify({
+          event: 'join',
+          data: this.$route.params.id,
+        })
+      );
+  },
+
   beforeUnmount() {
-    this.$store.dispatch('changeCurrentChatName', 'default name');
+    localStorage.removeItem('currentChatName');
+    this.$store.dispatch('chatModule/changeCurrentChatName', 'default name');
+    this.$store.state.socketInstance.socketConnected &&
+      this.$store.state.socketInstance.socket.send(
+        JSON.stringify({
+          event: 'leave',
+          data: this.$route.params.id,
+        })
+      );
   },
 };
 </script>
