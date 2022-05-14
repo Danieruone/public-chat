@@ -6,12 +6,14 @@
 
 <script>
 import ChatPreview from '@/components/ChatPreview.vue';
+import { useStore } from 'vuex';
 export default {
   name: 'DirectRooms',
   components: { ChatPreview },
-  data() {
+  setup() {
+    const store = useStore();
     return {
-      directChatRooms: this.$store.state.chatModule.directChatRooms,
+      directChatRooms: store.state.chatModule.directChatRooms,
     };
   },
 };

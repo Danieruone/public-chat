@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
 export default {
   name: 'PublicRoomPreview',
   props: {
@@ -19,11 +20,15 @@ export default {
     people: Number,
     id: String,
   },
-  methods: {
-    setChatStoreName() {
-      localStorage.setItem('currentChatName', this.roomName);
-      this.$store.dispatch('chatModule/changeCurrentChatName', this.roomName);
-    },
+  setup(props) {
+    const store = useStore();
+
+    const setChatStoreName = () => {
+      localStorage.setItem('currentChatName', props.roomName);
+      store.dispatch('chatModule/changeCurrentChatName', props.roomName);
+    };
+
+    return { setChatStoreName };
   },
 };
 </script>
