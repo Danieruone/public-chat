@@ -10,8 +10,8 @@ export default {
       console.log('WebSocket Client Connected');
       this.$store.dispatch('socketInstance/setSocketConnection', true);
     };
-    this.$store.state.socketInstance.socket.onclose = function (e) {
-      console.log('Socket is closed. Trying to reconnect', e.reason);
+    this.$store.state.socketInstance.socket.onclose = () => {
+      console.log('Socket is closed. Trying to reconnect');
       this.$store.dispatch('socketInstance/setSocketConnection', false);
       this.$store.dispatch(
         'socketInstance/reconnectSocket',
