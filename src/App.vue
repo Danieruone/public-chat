@@ -2,24 +2,26 @@
   <router-view />
 </template>
 
-<script>
-export default {
-  name: 'App',
-  created() {
-    this.$store.state.socketInstance.socket.onopen = () => {
-      console.log('WebSocket Client Connected');
-      this.$store.dispatch('socketInstance/setSocketConnection', true);
-    };
-    this.$store.state.socketInstance.socket.onclose = () => {
-      console.log('Socket is closed. Trying to reconnect');
-      this.$store.dispatch('socketInstance/setSocketConnection', false);
-      this.$store.dispatch(
-        'socketInstance/reconnectSocket',
-        new WebSocket(process.env.VUE_APP_SOCKET_CONNECTION)
-      );
-    };
-  },
-};
+<script setup>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+onMounted(() => {
+  store.state.socketInstance.socket.onopen = () => {
+    console.log('WebSocket Client Connected');
+    store.dispatch('socketInstance/setSocketConnection', true);
+  };
+  store.state.socketInstance.socket.onclose = () => {
+    console.log('Socket is closed. Trying to reconnect');
+    store.dispatch('socketInstance/setSocketConnection', false);
+    store.dispatch(
+      'socketInstance/reconnectSocket',
+      new WebSocket(process.env.VUE_APP_SOCKET_CONNECTION)
+    );
+  };
+});
 </script>
 
 <style>

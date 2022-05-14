@@ -10,12 +10,15 @@
 
 <script>
 import PublicRoomPreview from '@/components/PublicRoomPreview.vue';
+import { useStore } from 'vuex';
+
 export default {
   name: 'PublicRooms',
   components: { PublicRoomPreview },
-  data() {
+  setup() {
+    const store = useStore();
     return {
-      publicChatRooms: this.$store.state.chatModule.publicChatRooms,
+      publicChatRooms: store.state.chatModule.publicChatRooms,
     };
   },
 };
