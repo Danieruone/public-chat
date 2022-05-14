@@ -7,7 +7,7 @@ export default {
   name: 'ChatView',
   data() {
     return {
-      chatName: this.$store.state.currentChatName,
+      chatName: this.$store.state.chatModule.currentChatName,
     };
   },
   created() {
@@ -22,7 +22,7 @@ export default {
 
   beforeUnmount() {
     localStorage.removeItem('currentChatName');
-    this.$store.dispatch('changeCurrentChatName', 'default name');
+    this.$store.dispatch('chatModule/changeCurrentChatName', 'default name');
     this.$store.state.socketInstance.socketConnected &&
       this.$store.state.socketInstance.socket.send(
         JSON.stringify({

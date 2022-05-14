@@ -11,7 +11,7 @@ export default {
   components: { ChatPreview },
   data() {
     return {
-      directChatRooms: this.$store.state.directChatRooms,
+      directChatRooms: this.$store.state.chatModule.directChatRooms,
     };
   },
 };

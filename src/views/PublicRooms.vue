@@ -15,7 +15,7 @@ export default {
   components: { PublicRoomPreview },
   data() {
     return {
-      publicChatRooms: this.$store.state.publicChatRooms,
+      publicChatRooms: this.$store.state.chatModule.publicChatRooms,
     };
   },
 };

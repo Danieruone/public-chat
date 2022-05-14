@@ -22,7 +22,7 @@ export default {
   methods: {
     setChatStoreName() {
       localStorage.setItem('currentChatName', this.roomName);
-      this.$store.dispatch('changeCurrentChatName', this.roomName);
+      this.$store.dispatch('chatModule/changeCurrentChatName', this.roomName);
     },
   },
 };
