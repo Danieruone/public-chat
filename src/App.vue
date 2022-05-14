@@ -6,12 +6,11 @@
 export default {
   name: 'App',
   created() {
-    this.$store.state.socket.onopen = () => {
+    this.$store.state.socketInstance.socket.onopen = () => {
       console.log('WebSocket Client Connected');
       this.$store.dispatch('setSocketConnection', true);
     };
-
-    this.$store.state.socket.onclose = function (e) {
+    this.$store.state.socketInstance.socket.onclose = function (e) {
       console.log('Socket is closed. Trying to reconnect', e.reason);
       this.$store.dispatch('setSocketConnection', false);
       this.$store.dispatch(

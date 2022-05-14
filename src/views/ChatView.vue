@@ -11,8 +11,8 @@ export default {
     };
   },
   created() {
-    this.$store.state.socketConnected &&
-      this.$store.state.socket.send(
+    this.$store.state.socketInstance.socketConnected &&
+      this.$store.state.socketInstance.socket.send(
         JSON.stringify({
           event: 'join',
           data: this.$route.params.id,
@@ -23,8 +23,8 @@ export default {
   beforeUnmount() {
     localStorage.removeItem('currentChatName');
     this.$store.dispatch('changeCurrentChatName', 'default name');
-    this.$store.state.socketConnected &&
-      this.$store.state.socket.send(
+    this.$store.state.socketInstance.socketConnected &&
+      this.$store.state.socketInstance.socket.send(
         JSON.stringify({
           event: 'leave',
           data: this.$route.params.id,

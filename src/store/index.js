@@ -1,10 +1,11 @@
 import { createStore } from 'vuex';
 
+import socketInstance from './modules/socket';
+
 export const store = createStore({
+  modules: { socketInstance },
   state() {
     return {
-      socket: new WebSocket('ws://159.203.189.250:8080/ws'),
-      socketConnected: false,
       currentChatName:
         localStorage.getItem('currentChatName') || 'default name',
       publicChatRooms: [
@@ -60,12 +61,6 @@ export const store = createStore({
     },
   },
   mutations: {
-    reconnectSocket(state, payload) {
-      state.socket = payload;
-    },
-    setSocketConnection(state, payload) {
-      state.socketConnected = payload;
-    },
     changeCurrentChatName(state, payload) {
       state.currentChatName = payload;
     },
@@ -73,12 +68,6 @@ export const store = createStore({
   actions: {
     changeCurrentChatName(store, payload) {
       store.commit('changeCurrentChatName', payload);
-    },
-    reconnectSocket(store, payload) {
-      store.commit('reconnectSocket', payload);
-    },
-    setSocketConnection(store, payload) {
-      store.commit('setSocketConnection', payload);
     },
   },
 });
