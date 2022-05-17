@@ -2,8 +2,9 @@ import { createStore } from 'vuex';
 
 // modules
 import socketInstance from './modules/socket';
-import chatModule from './modules/chats';
+import chatRooms from './modules/chatRooms';
+import chatModule from './modules/chatModule';
 
 export const store = createStore({
-  modules: { socketInstance, chatModule },
+  modules: { socketInstance, chatRooms, chatModule },
 });

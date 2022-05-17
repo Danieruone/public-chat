@@ -25,7 +25,7 @@ export default {
 
     const setChatStoreName = () => {
       localStorage.setItem('currentChatName', props.roomName);
-      store.dispatch('chatModule/changeCurrentChatName', props.roomName);
+      store.dispatch('chatRooms/changeCurrentChatName', props.roomName);
     };
 
     return { setChatStoreName };

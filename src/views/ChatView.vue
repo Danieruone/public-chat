@@ -10,7 +10,7 @@ import { useRoute } from 'vue-router';
 const store = useStore();
 const route = useRoute();
 
-const chatName = store.state.chatModule.currentChatName;
+const chatName = store.state.chatRooms.currentChatName;
 
 onMounted(() => {
   store.state.socketInstance.socketConnected &&
@@ -23,7 +23,7 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
   localStorage.removeItem('currentChatName');
-  store.dispatch('chatModule/changeCurrentChatName', 'default name');
+  store.dispatch('chatRooms/changeCurrentChatName', 'default name');
   store.state.socketInstance.socketConnected &&
     store.state.socketInstance.socket.send(
       JSON.stringify({

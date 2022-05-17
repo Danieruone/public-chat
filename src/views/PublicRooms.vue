@@ -18,7 +18,7 @@ export default {
   setup() {
     const store = useStore();
     return {
-      publicChatRooms: store.state.chatModule.publicChatRooms,
+      publicChatRooms: store.state.chatRooms.publicChatRooms,
     };
   },
 };
