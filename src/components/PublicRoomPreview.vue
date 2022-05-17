@@ -5,7 +5,7 @@
     @click="setChatStoreName"
   >
     <span
-      ><strong> {{ roomName }}</strong></span
+      ><strong> {{ name }}</strong></span
     >
     <span>{{ people }}</span>
   </router-link>
@@ -16,7 +16,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'PublicRoomPreview',
   props: {
-    roomName: String,
+    name: String,
     people: Number,
     id: String,
   },
@@ -24,8 +24,8 @@ export default {
     const store = useStore();
 
     const setChatStoreName = () => {
-      localStorage.setItem('currentChatName', props.roomName);
-      store.dispatch('chatModule/changeCurrentChatName', props.roomName);
+      localStorage.setItem('currentChatName', props.name);
+      store.dispatch('chatRooms/changeCurrentChatName', props.name);
     };
 
     return { setChatStoreName };

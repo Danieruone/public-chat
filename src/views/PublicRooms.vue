@@ -5,21 +5,21 @@
       :key="idx"
       v-bind="room"
     />
+    <span v-if="publicChatRooms.length === 0">Loading...</span>
   </div>
 </template>
 
 <script>
 import PublicRoomPreview from '@/components/PublicRoomPreview.vue';
-import { useStore } from 'vuex';
 
 export default {
   name: 'PublicRooms',
   components: { PublicRoomPreview },
-  setup() {
-    const store = useStore();
-    return {
-      publicChatRooms: store.state.chatModule.publicChatRooms,
-    };
+
+  computed: {
+    publicChatRooms() {
+      return this.$store.state.chatRooms.publicChatRooms;
+    },
   },
 };
 </script>

@@ -13,7 +13,7 @@ export default {
   setup() {
     const store = useStore();
     return {
-      directChatRooms: store.state.chatModule.directChatRooms,
+      directChatRooms: store.state.chatRooms.directChatRooms,
     };
   },
 };
