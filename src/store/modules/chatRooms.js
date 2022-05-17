@@ -1,27 +1,6 @@
 const state = {
   currentChatName: localStorage.getItem('currentChatName') || 'default name',
-  publicChatRooms: [
-    {
-      roomName: 'Comics',
-      people: 590,
-      id: 'a20f61da-d193-11ec-9d64-0242ac120002',
-    },
-    {
-      roomName: 'Juegos',
-      people: 300,
-      id: 'a20f7d46-d193-11ec-9d64-0242ac120002',
-    },
-    {
-      roomName: 'Amistad',
-      people: 108,
-      id: 'a20f706c-d193-11ec-9d64-0242ac120002',
-    },
-    {
-      roomName: 'Libros',
-      people: 50,
-      id: 'a20f8692-d193-11ec-9d64-0242ac120002',
-    },
-  ],
+  publicChatRooms: [],
   directChatRooms: [
     {
       name: 'Daniel',
@@ -51,11 +30,17 @@ const mutations = {
   changeCurrentChatName(state, payload) {
     state.currentChatName = payload;
   },
+  changePublicChatRooms(state, payload) {
+    state.publicChatRooms = payload;
+  },
 };
 
 const actions = {
   changeCurrentChatName(store, payload) {
     store.commit('changeCurrentChatName', payload);
+  },
+  changePublicChatRooms(store, payload) {
+    store.commit('changePublicChatRooms', payload);
   },
 };
 
