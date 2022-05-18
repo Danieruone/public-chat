@@ -62,6 +62,7 @@ export default {
     onBeforeUnmount(() => {
       localStorage.removeItem('currentChatName');
       store.dispatch('chatRooms/changeCurrentChatName', 'default name');
+      store.dispatch('chatModule/clearChat');
       store.state.socketInstance.socketConnected &&
         store.state.socketInstance.socket.send(
           JSON.stringify({
