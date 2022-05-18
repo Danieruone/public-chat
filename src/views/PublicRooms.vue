@@ -5,16 +5,20 @@
       :key="idx"
       v-bind="room"
     />
-    <span v-if="publicChatRooms.length === 0">Loading...</span>
+    <SpinnerComponent
+      v-if="publicChatRooms.length === 0"
+      class="spinner"
+    ></SpinnerComponent>
   </div>
 </template>
 
 <script>
 import PublicRoomPreview from '@/components/PublicRoomPreview.vue';
+import SpinnerComponent from '@/components/SpinnerComponent.vue';
 
 export default {
   name: 'PublicRooms',
-  components: { PublicRoomPreview },
+  components: { PublicRoomPreview, SpinnerComponent },
 
   computed: {
     publicChatRooms() {

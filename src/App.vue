@@ -30,6 +30,9 @@ onMounted(() => {
       const rooms = data.data.map((room) => JSON.parse(room));
       store.dispatch('chatRooms/changePublicChatRooms', rooms);
     }
+    if (data.event === 'message') {
+      store.dispatch('chatModule/addMessage', data.data);
+    }
   };
 });
 </script>
