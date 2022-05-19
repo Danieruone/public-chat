@@ -1,8 +1,8 @@
 const storedProfile = JSON.parse(localStorage.getItem('profile'));
 
 const state = {
-  id: storedProfile.id,
-  name: storedProfile.name,
+  id: storedProfile?.id || '',
+  name: storedProfile?.name || '',
 };
 
 const mutations = {
