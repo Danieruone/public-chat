@@ -35,7 +35,7 @@ export default {
 }
 
 .messageContainer div {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .messageContainer p {
@@ -53,7 +53,7 @@ export default {
 
 .selfUserColor div {
   margin-right: 0px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .selfUserColor p {

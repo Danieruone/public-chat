@@ -43,22 +43,22 @@ export default {
     const route = useRoute();
 
     const chatName = store.state.chatRooms.currentChatName;
+    const roomId = route.params.id;
 
     // chat
     const message = ref('');
 
     onBeforeUnmount(() => {
-      localStorage.removeItem('currentChatName');
-      store.dispatch('chatRooms/changeCurrentChatName', 'default name');
-      store.dispatch('chatModule/clearChat');
       store.state.socketInstance.socketConnected &&
         store.state.socketInstance.socket.send(
           JSON.stringify({
             event: 'leaveRoom',
-            data: route.params.id,
+            data: roomId,
           })
         );
-      console.log('room leaved');
+      localStorage.removeItem('currentChatName');
+      store.dispatch('chatRooms/changeCurrentChatName', 'default name');
+      store.dispatch('chatModule/clearChat');
     });
 
     const sendMessage = () => {
@@ -67,7 +67,7 @@ export default {
           JSON.stringify({
             event: 'roomMessage',
             data: {
-              room: route.params.id,
+              room: roomId,
               message: message.value,
             },
           })
