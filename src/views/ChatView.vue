@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { onMounted, onBeforeUnmount, ref } from 'vue';
+import { onBeforeUnmount, ref, watchEffect } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -47,18 +47,6 @@ export default {
     // chat
     const message = ref('');
 
-    onMounted(() => {
-      store.state.socketInstance.socketConnected &&
-        store.state.socketInstance.socket.send(
-          JSON.stringify({
-            event: 'join',
-            data: route.params.id,
-          })
-        );
-
-      console.log('Joined to room ' + route.params.id);
-    });
-
     onBeforeUnmount(() => {
       localStorage.removeItem('currentChatName');
       store.dispatch('chatRooms/changeCurrentChatName', 'default name');
@@ -66,7 +54,7 @@ export default {
       store.state.socketInstance.socketConnected &&
         store.state.socketInstance.socket.send(
           JSON.stringify({
-            event: 'leave',
+            event: 'leaveRoom',
             data: route.params.id,
           })
         );
@@ -80,12 +68,22 @@ export default {
             event: 'roomMessage',
             data: {
               room: route.params.id,
-              msg: message.value,
+              message: message.value,
             },
           })
         );
       message.value = '';
     };
+
+    watchEffect(() => {
+      store.state.socketInstance.socketConnected &&
+        store.state.socketInstance.socket.send(
+          JSON.stringify({
+            event: 'joinRoom',
+            data: route.params.id,
+          })
+        );
+    });
 
     return {
       chatName,
