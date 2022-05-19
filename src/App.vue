@@ -3,17 +3,19 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, watchEffect } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 onMounted(() => {
+  // connected
   store.state.socketInstance.socket.onopen = () => {
     console.log('WebSocket Client Connected');
     store.dispatch('socketInstance/setSocketConnection', true);
   };
 
+  // reconnect
   store.state.socketInstance.socket.onclose = () => {
     console.log('Socket is closed. Trying to reconnect');
     store.dispatch('socketInstance/setSocketConnection', false);
@@ -23,17 +25,32 @@ onMounted(() => {
     );
   };
 
+  // messages listener
   store.state.socketInstance.socket.onmessage = function (event) {
     const data = JSON.parse(event.data);
     console.log(data);
     if (data.event === 'rooms') {
-      const rooms = data.data.map((room) => JSON.parse(room));
-      store.dispatch('chatRooms/changePublicChatRooms', rooms);
+      store.dispatch('chatRooms/changePublicChatRooms', data.data);
     }
-    if (data.event === 'message') {
+    if (data.event === 'roomMessage') {
       store.dispatch('chatModule/addMessage', data.data);
     }
+    if (data.event === 'profile') {
+      localStorage.setItem('profile', JSON.stringify(data.data));
+      store.dispatch('profileModule/setProfile', data.data);
+    }
   };
+});
+
+// profile
+watchEffect(() => {
+  store.state.socketInstance.socketConnected &&
+    store.state.socketInstance.socket.send(
+      JSON.stringify({
+        event: 'profile',
+        data: { name: 'Daru' },
+      })
+    );
 });
 </script>
 
