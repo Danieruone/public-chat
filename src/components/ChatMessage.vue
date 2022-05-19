@@ -1,7 +1,7 @@
 <template>
   <div class="messageContainer" :class="{ selfUserColor: selfUser }">
     <div>
-      <strong>{{ chatName }}:</strong>
+      <strong>{{ chatName }}</strong>
     </div>
     <p>{{ message }}</p>
   </div>
@@ -44,6 +44,16 @@ export default {
   color: white;
   padding: 5px 10px;
   margin: 0;
+}
+
+.selfUserColor {
+  justify-content: end;
+  flex-direction: row-reverse;
+}
+
+.selfUserColor div {
+  margin-right: 0px;
+  margin-left: 10px;
 }
 
 .selfUserColor p {
