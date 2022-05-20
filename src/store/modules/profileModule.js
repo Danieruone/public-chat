@@ -7,6 +7,7 @@ const state = {
 
 const mutations = {
   setProfile(state, payload) {
+    localStorage.setItem('profile', JSON.stringify(payload));
     state.id = payload.id;
     state.name = payload.name;
   },

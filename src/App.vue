@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { onMounted, watchEffect } from 'vue';
+import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -36,21 +36,9 @@ onMounted(() => {
       store.dispatch('chatModule/addMessage', data.data);
     }
     if (data.event === 'profile') {
-      localStorage.setItem('profile', JSON.stringify(data.data));
       store.dispatch('profileModule/setProfile', data.data);
     }
   };
-});
-
-// profile
-watchEffect(() => {
-  store.state.socketInstance.socketConnected &&
-    store.state.socketInstance.socket.send(
-      JSON.stringify({
-        event: 'profile',
-        data: { name: 'Daru' },
-      })
-    );
 });
 </script>
 
