@@ -40,3 +40,10 @@ export const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+router.beforeEach((to) => {
+  const profile = localStorage.getItem('profile');
+  if (!profile && to.path !== '/') {
+    return '/';
+  }
+});

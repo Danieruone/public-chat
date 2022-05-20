@@ -36,7 +36,6 @@ onMounted(() => {
       store.dispatch('chatModule/addMessage', data.data);
     }
     if (data.event === 'profile') {
-      localStorage.setItem('profile', JSON.stringify(data.data));
       store.dispatch('profileModule/setProfile', data.data);
     }
   };
