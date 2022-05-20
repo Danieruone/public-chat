@@ -46,4 +46,7 @@ router.beforeEach((to) => {
   if (!profile && to.path !== '/') {
     return '/';
   }
+  if (profile && to.path === '/') {
+    return '/rooms';
+  }
 });

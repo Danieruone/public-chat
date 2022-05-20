@@ -43,13 +43,15 @@ onMounted(() => {
 
 // profile
 watchEffect(() => {
-  store.state.socketInstance.socketConnected &&
+  const profile = localStorage.getItem('profile');
+  if (profile && store.state.socketInstance.socketConnected) {
     store.state.socketInstance.socket.send(
       JSON.stringify({
         event: 'profile',
-        data: { name: 'Daru' },
+        data: { name: profile.name },
       })
     );
+  }
 });
 </script>
 
