@@ -98,8 +98,7 @@ export default {
 .chatContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 99vh;
+  height: 100vh;
 }
 
 .header {
@@ -120,9 +119,10 @@ export default {
 }
 
 .messagesContainer {
-  height: 100%;
+  height: calc(100vh - 170px);
   background-color: #f5f7fb;
   padding: 1rem;
+  overflow-y: scroll;
 }
 
 .inputContainer {
