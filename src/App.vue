@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { onMounted, watchEffect } from 'vue';
+import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -39,19 +39,6 @@ onMounted(() => {
       store.dispatch('profileModule/setProfile', data.data);
     }
   };
-});
-
-// profile
-watchEffect(() => {
-  const profile = localStorage.getItem('profile');
-  if (profile && store.state.socketInstance.socketConnected) {
-    store.state.socketInstance.socket.send(
-      JSON.stringify({
-        event: 'profile',
-        data: { name: profile.name },
-      })
-    );
-  }
 });
 </script>
 

@@ -2,16 +2,41 @@
   <div class="homeViewContainer">
     <div class="inputCard">
       <h3>Choose your name</h3>
-      <input type="text" placeholder="Type your name..." />
-      <button>Save</button>
+      <input
+        type="text"
+        placeholder="Type your name..."
+        v-model="profileName"
+      />
+      <button @click="setProfileName">Save</button>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
 export default {
   name: 'HomeView',
-  props: {},
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+
+    const profileName = ref('');
+
+    const setProfileName = () => {
+      if (profileName.value !== '') {
+        store.dispatch('profileModule/setProfile', {
+          name: profileName.value,
+          id: '',
+        });
+        router.push('/rooms');
+      }
+    };
+
+    return { setProfileName, profileName };
+  },
 };
 </script>
 
