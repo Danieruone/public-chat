@@ -1,5 +1,9 @@
 <template>
-  <div class="messageContainer" :class="{ selfUserColor: selfUser }">
+  <div
+    class="messageContainer"
+    :class="{ selfUserColor: selfUser }"
+    @click="redirectToChat"
+  >
     <div>
       <strong>{{ chatName }}</strong>
     </div>
@@ -9,6 +13,7 @@
 
 <script>
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'ChatPreview',
@@ -19,10 +24,26 @@ export default {
   },
   setup(props) {
     const store = useStore();
+    const router = useRouter();
+
     const selfUser = store.state.profileModule.id === props.id;
     const chatName = selfUser ? 'Me' : props.name;
 
-    return { chatName, selfUser };
+    const redirectToChat = () => {
+      if (!selfUser) {
+        store.state.socketInstance.socketConnected &&
+          store.state.socketInstance.socket.send(
+            JSON.stringify({
+              event: 'leaveRoom',
+              data: props.room,
+            })
+          );
+        store.dispatch('chatRooms/changeCurrentChatName', props.name);
+        router.push(`/chat/${props.id}`);
+      }
+    };
+
+    return { chatName, selfUser, redirectToChat };
   },
 };
 </script>
