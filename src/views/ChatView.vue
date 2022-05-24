@@ -37,12 +37,15 @@ export default {
     chatMessages() {
       return this.$store.state.chatModule.chatMessages;
     },
+
+    chatName() {
+      return this.$store.state.chatRooms.currentChatName;
+    },
   },
   setup() {
     const store = useStore();
     const route = useRoute();
 
-    const chatName = store.state.chatRooms.currentChatName;
     const roomId = route.params.id;
 
     // chat
@@ -86,7 +89,6 @@ export default {
     });
 
     return {
-      chatName,
       message,
       sendMessage,
     };
